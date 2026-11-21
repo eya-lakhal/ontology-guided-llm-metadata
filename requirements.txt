@@ -1,0 +1,5 @@
+rdflib>=7.0,<8
+pyshacl>=0.26,<1
+pydantic>=2.6,<3
+python-dotenv>=1.0,<2
+pytest>=8.0,<9
