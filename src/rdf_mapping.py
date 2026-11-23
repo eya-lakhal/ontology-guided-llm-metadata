@@ -58,8 +58,8 @@ def annotation_to_triples(annotation: Mapping[str, Any]) -> list[tuple[URIRef, U
     """Convert one annotation dict into a list of RDF triples."""
     s = resource_uri(annotation["id"])
     triples: list[tuple[URIRef, URIRef, Any]] = []
-    if annotation.get("resource_type"):
-        triples.append((s, RDF.type, ABX[annotation["resource_type"]]))
+    # an untyped record is still typed abx:Resource so that SHACL shapes target it
+    triples.append((s, RDF.type, ABX[annotation.get("resource_type") or "Resource"]))
     for field, (prop, dtype) in DATA_FIELDS.items():
         value = annotation.get(field)
         if value not in (None, ""):
