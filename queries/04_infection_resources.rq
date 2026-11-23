@@ -1,0 +1,13 @@
+# Resources about ANY kind of infection: topics are classified under abx:Infection
+# (UrinaryTractInfection, RespiratoryInfection), the query walks the subclass hierarchy.
+PREFIX abx:  <https://eya-lakhal.github.io/ontology-guided-llm-metadata/abx#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?resource ?title (GROUP_CONCAT(DISTINCT ?topicLabel; separator=", ") AS ?infections)
+WHERE {
+  ?resource abx:title ?title ; abx:coversTopic ?t .
+  ?t a/rdfs:subClassOf* abx:Infection ; rdfs:label ?topicLabel .
+  FILTER(lang(?topicLabel) = "en")
+}
+GROUP BY ?resource ?title
+ORDER BY ?resource

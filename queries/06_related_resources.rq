@@ -1,0 +1,13 @@
+# Pairs of related resources. abx:relatedTo is symmetric: both directions are matched
+# without needing an OWL reasoner, and each pair is reported once.
+PREFIX abx:  <https://eya-lakhal.github.io/ontology-guided-llm-metadata/abx#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?titleA ?titleB
+WHERE {
+  { ?a abx:relatedTo ?b } UNION { ?b abx:relatedTo ?a }
+  ?a abx:title ?titleA .
+  ?b abx:title ?titleB .
+  FILTER(STR(?a) < STR(?b))
+}
+ORDER BY ?titleA ?titleB

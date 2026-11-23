@@ -1,0 +1,10 @@
+# Resources with no usage condition: candidates for curation by an expert.
+PREFIX abx:  <https://eya-lakhal.github.io/ontology-guided-llm-metadata/abx#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?resource ?title
+WHERE {
+  ?resource abx:title ?title .
+  FILTER NOT EXISTS { ?resource abx:hasUsageCondition ?c }
+}
+ORDER BY ?resource

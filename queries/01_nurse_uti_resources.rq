@@ -1,0 +1,17 @@
+# Resources for nurses about urinary tract infections.
+# Uses the class hierarchy: any individual typed with abx:Nurse (or a subclass) counts.
+PREFIX abx:  <https://eya-lakhal.github.io/ontology-guided-llm-metadata/abx#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?resource ?title ?type
+WHERE {
+  ?resource abx:title ?title ;
+            a ?typeClass ;
+            abx:hasTargetAudience ?aud ;
+            abx:coversTopic ?topic .
+  ?aud   a/rdfs:subClassOf* abx:Nurse .
+  ?topic a/rdfs:subClassOf* abx:UrinaryTractInfection .
+  ?typeClass rdfs:subClassOf abx:Resource ; rdfs:label ?type .
+  FILTER(lang(?type) = "en")
+}
+ORDER BY ?resource

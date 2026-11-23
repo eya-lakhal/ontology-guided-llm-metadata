@@ -1,0 +1,12 @@
+# Number of resources per target audience, with French labels (public cible).
+PREFIX abx:  <https://eya-lakhal.github.io/ontology-guided-llm-metadata/abx#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?public (COUNT(DISTINCT ?resource) AS ?n)
+WHERE {
+  ?resource abx:hasTargetAudience ?a .
+  ?a rdfs:label ?public .
+  FILTER(lang(?public) = "fr")
+}
+GROUP BY ?public
+ORDER BY DESC(?n) ?public

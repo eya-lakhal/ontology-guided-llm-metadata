@@ -1,0 +1,17 @@
+# French resources published since 2023 that target health professionals
+# (any subclass of abx:HealthProfessional), with their format.
+PREFIX abx:  <https://eya-lakhal.github.io/ontology-guided-llm-metadata/abx#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?title ?year ?format (GROUP_CONCAT(DISTINCT ?audLabel; separator=", ") AS ?audiences)
+WHERE {
+  ?resource abx:title ?title ;
+            abx:language ?lang ;
+            abx:publicationYear ?year ;
+            abx:hasFormat/rdfs:label ?format ;
+            abx:hasTargetAudience ?aud .
+  ?aud a/rdfs:subClassOf* abx:HealthProfessional ; rdfs:label ?audLabel .
+  FILTER(STR(?lang) = "fr" && ?year >= 2023 && lang(?audLabel) = "en" && lang(?format) = "en")
+}
+GROUP BY ?title ?year ?format
+ORDER BY DESC(?year) ?title

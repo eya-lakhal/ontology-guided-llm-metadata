@@ -1,0 +1,12 @@
+# Number of resources per topic (English labels).
+PREFIX abx:  <https://eya-lakhal.github.io/ontology-guided-llm-metadata/abx#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?topic (COUNT(DISTINCT ?resource) AS ?n)
+WHERE {
+  ?resource abx:coversTopic ?t .
+  ?t rdfs:label ?topic .
+  FILTER(lang(?topic) = "en")
+}
+GROUP BY ?topic
+ORDER BY DESC(?n) ?topic

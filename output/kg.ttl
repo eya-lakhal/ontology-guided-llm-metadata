@@ -1,0 +1,149 @@
+@prefix abx: <https://eya-lakhal.github.io/ontology-guided-llm-metadata/abx#> .
+@prefix abxd: <https://eya-lakhal.github.io/ontology-guided-llm-metadata/data/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+abxd:r04 a abx:Video ;
+    abx:coversTopic abx:antibiotic_resistance,
+        abx:vaccination ;
+    abx:hasFormat abx:video_file ;
+    abx:hasObjective abx:raise_awareness ;
+    abx:hasTargetAudience abx:family,
+        abx:resident ;
+    abx:language "fr"^^xsd:string ;
+    abx:publicationYear 2021 ;
+    abx:publisher "Vieillir en Santé"^^xsd:string ;
+    abx:title "Les antibiotiques, c'est pas automatique… même en EHPAD"^^xsd:string .
+
+abxd:r07 a abx:Poster ;
+    abx:coversTopic abx:respiratory_infection,
+        abx:vaccination ;
+    abx:hasFormat abx:print ;
+    abx:hasObjective abx:prevent_infection,
+        abx:raise_awareness ;
+    abx:hasTargetAudience abx:care_assistant,
+        abx:nurse,
+        abx:resident ;
+    abx:language "en"^^xsd:string ;
+    abx:publicationYear 2022 ;
+    abx:publisher "Riverside Care Homes Group"^^xsd:string ;
+    abx:title "Flu season: protect yourself, protect your residents"^^xsd:string .
+
+abxd:r09 a abx:Training ;
+    abx:coversTopic abx:antibiotic_resistance ;
+    abx:hasFormat abx:elearning ;
+    abx:hasObjective abx:raise_awareness,
+        abx:train_staff ;
+    abx:hasTargetAudience abx:care_assistant,
+        abx:nurse,
+        abx:pharmacist,
+        abx:physician ;
+    abx:hasUsageCondition abx:free_access,
+        abx:open_licence ;
+    abx:language "en"^^xsd:string ;
+    abx:publicationYear 2025 ;
+    abx:publisher "European Long-Term Care Academy"^^xsd:string ;
+    abx:title "Antimicrobial resistance in long-term care: an open online course"^^xsd:string .
+
+abxd:r01 a abx:Poster ;
+    abx:coversTopic abx:uti ;
+    abx:hasFormat abx:print ;
+    abx:hasObjective abx:improve_diagnosis,
+        abx:reduce_unnecessary_prescription ;
+    abx:hasTargetAudience abx:care_assistant,
+        abx:nurse ;
+    abx:hasUsageCondition abx:free_access ;
+    abx:language "fr"^^xsd:string ;
+    abx:publicationYear 2023 ;
+    abx:publisher "CRAPI Grand-Est"^^xsd:string ;
+    abx:relatedTo abxd:r05 ;
+    abx:title "Bandelette urinaire en EHPAD : pas de dépistage systématique"^^xsd:string .
+
+abxd:r02 a abx:Training ;
+    abx:coversTopic abx:antibiotic_resistance,
+        abx:prescription ;
+    abx:hasFormat abx:elearning ;
+    abx:hasObjective abx:improve_prescription_quality,
+        abx:train_staff ;
+    abx:hasTargetAudience abx:physician ;
+    abx:hasUsageCondition abx:registration_required ;
+    abx:language "fr"^^xsd:string ;
+    abx:publicationYear 2024 ;
+    abx:publisher "Institut Antibio-Formation"^^xsd:string ;
+    abx:relatedTo abxd:r08 ;
+    abx:title "Prescrire les antibiotiques en EHPAD : formation en ligne"^^xsd:string .
+
+abxd:r03 a abx:PracticalSheet ;
+    abx:coversTopic abx:hand_hygiene ;
+    abx:hasFormat abx:pdf ;
+    abx:hasObjective abx:prevent_infection ;
+    abx:hasTargetAudience abx:care_assistant,
+        abx:nurse ;
+    abx:hasUsageCondition abx:open_licence ;
+    abx:language "en"^^xsd:string ;
+    abx:publicationYear 2022 ;
+    abx:publisher "Northfield Infection Prevention Network"^^xsd:string ;
+    abx:relatedTo abxd:r06 ;
+    abx:title "Hand rub in 7 steps"^^xsd:string .
+
+abxd:r05 a abx:Tool ;
+    abx:coversTopic abx:prescription,
+        abx:uti ;
+    abx:hasFormat abx:web_app ;
+    abx:hasObjective abx:improve_diagnosis,
+        abx:reduce_unnecessary_prescription ;
+    abx:hasTargetAudience abx:nurse,
+        abx:physician ;
+    abx:hasUsageCondition abx:free_access,
+        abx:professional_use_only ;
+    abx:language "en"^^xsd:string ;
+    abx:publicationYear 2024 ;
+    abx:publisher "CareHome Stewardship Lab"^^xsd:string ;
+    abx:relatedTo abxd:r01 ;
+    abx:title "UTI Check: decision support for suspected urinary tract infection"^^xsd:string .
+
+abxd:r06 a abx:Training ;
+    abx:coversTopic abx:antibiotic_resistance,
+        abx:hand_hygiene ;
+    abx:hasFormat abx:face_to_face ;
+    abx:hasObjective abx:prevent_infection,
+        abx:train_staff ;
+    abx:hasTargetAudience abx:care_assistant,
+        abx:nurse ;
+    abx:hasUsageCondition abx:registration_required,
+        abx:trainer_required ;
+    abx:language "fr"^^xsd:string ;
+    abx:publicationYear 2023 ;
+    abx:publisher "Hygiène Sud-Ouest"^^xsd:string ;
+    abx:relatedTo abxd:r03 ;
+    abx:title "Atelier hygiène des mains et prévention des BMR"^^xsd:string .
+
+abxd:r10 a abx:PracticalSheet ;
+    abx:coversTopic abx:prescription,
+        abx:respiratory_infection ;
+    abx:hasFormat abx:pdf ;
+    abx:hasObjective abx:improve_diagnosis ;
+    abx:hasTargetAudience abx:nurse,
+        abx:physician ;
+    abx:hasUsageCondition abx:free_access ;
+    abx:language "fr"^^xsd:string ;
+    abx:publicationYear 2023 ;
+    abx:publisher "CRAPI Grand-Est"^^xsd:string ;
+    abx:relatedTo abxd:r08 ;
+    abx:title "Pneumopathie chez le résident : quand l'évoquer, que faire ?"^^xsd:string .
+
+abxd:r08 a abx:PracticalSheet ;
+    abx:coversTopic abx:prescription,
+        abx:respiratory_infection,
+        abx:uti ;
+    abx:hasFormat abx:pdf ;
+    abx:hasObjective abx:improve_prescription_quality ;
+    abx:hasTargetAudience abx:pharmacist,
+        abx:physician ;
+    abx:hasUsageCondition abx:professional_use_only ;
+    abx:language "fr"^^xsd:string ;
+    abx:publicationYear 2024 ;
+    abx:publisher "Ordre des pharmaciens de Lorraine-Est"^^xsd:string ;
+    abx:relatedTo abxd:r02,
+        abxd:r10 ;
+    abx:title "Durées de traitement antibiotique : fiche mémo pour l'officine"^^xsd:string .
+
