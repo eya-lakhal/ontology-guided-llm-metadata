@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest -v
+
+      - name: SHACL validation of the ontology examples
+        run: python -m src.validate ontology/examples.ttl
+
+      - name: Build the knowledge graph from gold annotations (SHACL-checked)
+        run: |
+          python -m src.build_graph --out output/kg.ttl
+          python -m src.validate output/kg.ttl
+
+      - name: Run SPARQL queries
+        run: python -m src.query --kg output/kg.ttl
+
+      - name: Offline end-to-end evaluation (mock provider)
+        run: python -m src.evaluate --provider mock --out output/ci_evaluation.md

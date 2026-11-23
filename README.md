@@ -3,7 +3,7 @@
 **Characterising antibiotic stewardship resources with an LLM guided by an OWL ontology,
 with SHACL validation, SPARQL querying, human-in-the-loop review and evaluation.**
 
-![Python](https://img.shields.io/badge/python-3.11-blue) ![License: MIT](https://img.shields.io/badge/license-MIT-green)
+[![CI](https://github.com/eya-lakhal/ontology-guided-llm-metadata/actions/workflows/ci.yml/badge.svg)](https://github.com/eya-lakhal/ontology-guided-llm-metadata/actions/workflows/ci.yml) ![Python](https://img.shields.io/badge/python-3.11-blue) ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 ![RDF](https://img.shields.io/badge/RDF-OWL%202%20%7C%20SHACL%20%7C%20SPARQL-orange)
 
 ---
