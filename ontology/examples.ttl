@@ -1,0 +1,26 @@
+@prefix abx:  <https://eya-lakhal.github.io/ontology-guided-llm-metadata/abx#> .
+@prefix abxd: <https://eya-lakhal.github.io/ontology-guided-llm-metadata/data/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# Hand-written example resources that must conform to ontology/shapes.ttl.
+
+abxd:example_poster_uti a abx:Poster ;
+    abx:title "Urine dipstick: think before you test" ;
+    abx:publisher "Example Regional Infection Control Centre" ;
+    abx:publicationYear 2023 ;
+    abx:language "en" ;
+    abx:hasTargetAudience abx:nurse , abx:care_assistant ;
+    abx:hasObjective abx:reduce_unnecessary_prescription ;
+    abx:coversTopic abx:uti ;
+    abx:hasFormat abx:print ;
+    abx:hasUsageCondition abx:free_access ;
+    abx:relatedTo abxd:example_training_prescription .
+
+abxd:example_training_prescription a abx:Training ;
+    abx:title "Antibiotic prescribing in nursing homes" ;
+    abx:language "fr" ;
+    abx:hasTargetAudience abx:physician ;
+    abx:hasObjective abx:improve_prescription_quality , abx:train_staff ;
+    abx:coversTopic abx:prescription , abx:antibiotic_resistance ;
+    abx:hasFormat abx:elearning ;
+    abx:hasUsageCondition abx:registration_required .

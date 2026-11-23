@@ -1,0 +1,70 @@
+@prefix abx:  <https://eya-lakhal.github.io/ontology-guided-llm-metadata/abx#> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# SHACL shapes for resource metadata records.
+# Validate with the ontology merged in the data graph (pyshacl ont_graph) and WITHOUT
+# RDFS inference: SHACL's rdfs:subClassOf* semantics already make sh:targetClass
+# abx:Resource reach Poster, Training, ... and sh:class accept abx:nurse a abx:Nurse,
+# while range axioms must not be used to "repair" wrongly typed values.
+
+abx:ResourceShape a sh:NodeShape ;
+    sh:targetClass abx:Resource ;
+    rdfs:label "Resource metadata shape"@en ;
+    sh:property [
+        sh:path abx:title ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:minLength 3 ;
+        sh:message "A resource must have exactly one title (string, at least 3 characters)." ;
+    ] ;
+    sh:property [
+        sh:path abx:hasTargetAudience ;
+        sh:class abx:TargetAudience ;
+        sh:minCount 1 ;
+        sh:message "A resource must have at least one target audience from the ontology." ;
+    ] ;
+    sh:property [
+        sh:path abx:coversTopic ;
+        sh:class abx:Topic ;
+        sh:minCount 1 ;
+        sh:message "A resource must cover at least one topic from the ontology." ;
+    ] ;
+    sh:property [
+        sh:path abx:hasFormat ;
+        sh:class abx:Format ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "A resource must have exactly one format from the ontology." ;
+    ] ;
+    sh:property [
+        sh:path abx:hasObjective ;
+        sh:class abx:Objective ;
+        sh:message "Objectives must be taken from the ontology." ;
+    ] ;
+    sh:property [
+        sh:path abx:hasUsageCondition ;
+        sh:class abx:UsageCondition ;
+        sh:message "Usage conditions must be taken from the ontology." ;
+    ] ;
+    sh:property [
+        sh:path abx:relatedTo ;
+        sh:class abx:Resource ;
+    ] ;
+    sh:property [
+        sh:path abx:publicationYear ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1990 ; sh:maxInclusive 2100 ;
+    ] ;
+    sh:property [
+        sh:path abx:language ;
+        sh:datatype xsd:string ;
+        sh:pattern "^(fr|en)$" ;
+        sh:message "Language must be an ISO 639-1 code: fr or en." ;
+    ] ;
+    sh:property [
+        sh:path abx:url ;
+        sh:datatype xsd:anyURI ;
+        sh:maxCount 1 ;
+    ] .
