@@ -17,6 +17,21 @@ and evaluation.
 | `src/` | Python pipeline |
 | `tests/` | Pytest test suite |
 
+## Ontology
+
+`ontology/abx_resources.ttl` (namespace `https://eya-lakhal.github.io/ontology-guided-llm-metadata/abx#`, prefix `abx:`)
+is an OWL 2 ontology in Turtle with bilingual (EN/FR) labels and comments.
+
+### Opening and checking it in Protégé
+
+1. Install [Protégé](https://protege.stanford.edu/) 5.6+.
+2. *File → Open…* and select `ontology/abx_resources.ttl`.
+3. Browse the *Classes*, *Object properties*, *Data properties* and *Individuals* tabs.
+   Tip: *View → Render by label (rdfs:label)* shows the human-readable labels.
+4. *Reasoner → HermiT*, then *Reasoner → Start reasoner*. The ontology should be **consistent**
+   and no class should appear under `owl:Nothing` in the inferred hierarchy.
+   Individuals are then classified, e.g. `abx:nurse` is inferred to be a `HealthProfessional` and a `TargetAudience`.
+
 ## Setup (Windows PowerShell)
 
 ```powershell

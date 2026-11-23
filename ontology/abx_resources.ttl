@@ -1,0 +1,398 @@
+@prefix abx:  <https://eya-lakhal.github.io/ontology-guided-llm-metadata/abx#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+#################################################################
+#    Ontology header
+#################################################################
+
+<https://eya-lakhal.github.io/ontology-guided-llm-metadata/abx>
+    a owl:Ontology ;
+    owl:versionInfo "0.1.0" ;
+    dcterms:title "Antibiotic Stewardship Resources Ontology (ABX-Res)"@en ,
+                  "Ontologie des ressources pour le bon usage des antibiotiques (ABX-Res)"@fr ;
+    dcterms:creator "Eya Lakhal" ;
+    dcterms:license <https://opensource.org/licenses/MIT> ;
+    rdfs:comment "A small OWL 2 ontology to characterise antibiotic stewardship resources (posters, practical sheets, trainings, videos, tools) aimed at nursing homes: who they target, which objectives and topics they cover, their format and usage conditions."@en ,
+                 "Petite ontologie OWL 2 pour caractériser les ressources de bon usage des antibiotiques destinées aux EHPAD : publics cibles, objectifs, thématiques, format et conditions d'utilisation."@fr .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+skos:altLabel a owl:AnnotationProperty .
+dcterms:title a owl:AnnotationProperty .
+dcterms:creator a owl:AnnotationProperty .
+dcterms:license a owl:AnnotationProperty .
+
+#################################################################
+#    Classes
+#################################################################
+
+### Resource hierarchy
+
+abx:Resource a owl:Class ;
+    rdfs:label "Resource"@en , "Ressource"@fr ;
+    rdfs:comment "An educational or practical resource supporting antibiotic stewardship."@en ,
+                 "Ressource pédagogique ou pratique en faveur du bon usage des antibiotiques."@fr .
+
+abx:Poster a owl:Class ;
+    rdfs:subClassOf abx:Resource ;
+    rdfs:label "Poster"@en , "Affiche"@fr ;
+    rdfs:comment "A visual document meant to be displayed (e.g. in a care unit)."@en ,
+                 "Document visuel destiné à être affiché (par ex. dans une unité de soins)."@fr .
+
+abx:PracticalSheet a owl:Class ;
+    rdfs:subClassOf abx:Resource ;
+    rdfs:label "Practical sheet"@en , "Fiche pratique"@fr ;
+    rdfs:comment "A short operational document (checklist, algorithm, memo)."@en ,
+                 "Document opérationnel court (check-list, algorithme, mémo)."@fr .
+
+abx:Training a owl:Class ;
+    rdfs:subClassOf abx:Resource ;
+    rdfs:label "Training"@en , "Formation"@fr ;
+    rdfs:comment "A training programme or course, face-to-face or online."@en ,
+                 "Programme ou session de formation, en présentiel ou à distance."@fr .
+
+abx:Video a owl:Class ;
+    rdfs:subClassOf abx:Resource ;
+    rdfs:label "Video"@en , "Vidéo"@fr ;
+    rdfs:comment "An audiovisual resource."@en , "Ressource audiovisuelle."@fr .
+
+abx:Tool a owl:Class ;
+    rdfs:subClassOf abx:Resource ;
+    rdfs:label "Tool"@en , "Outil"@fr ;
+    rdfs:comment "An interactive or decision-support tool (calculator, app, audit grid)."@en ,
+                 "Outil interactif ou d'aide à la décision (calculateur, application, grille d'audit)."@fr .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( abx:Poster abx:PracticalSheet abx:Training abx:Video abx:Tool ) .
+
+### Target audience hierarchy
+
+abx:TargetAudience a owl:Class ;
+    rdfs:label "Target audience"@en , "Public cible"@fr ;
+    rdfs:comment "A group of people a resource is intended for."@en ,
+                 "Groupe de personnes auquel une ressource est destinée."@fr .
+
+abx:HealthProfessional a owl:Class ;
+    rdfs:subClassOf abx:TargetAudience ;
+    rdfs:label "Health professional"@en , "Professionnel de santé"@fr ;
+    rdfs:comment "Any member of the care staff."@en , "Tout membre du personnel soignant."@fr .
+
+abx:Nurse a owl:Class ;
+    rdfs:subClassOf abx:HealthProfessional ;
+    rdfs:label "Nurse"@en , "Infirmier"@fr ;
+    rdfs:comment "Registered nurses, including coordinating nurses."@en ,
+                 "Infirmiers diplômés d'État, y compris infirmiers coordinateurs."@fr .
+
+abx:Physician a owl:Class ;
+    rdfs:subClassOf abx:HealthProfessional ;
+    rdfs:label "Physician"@en , "Médecin"@fr ;
+    rdfs:comment "General practitioners and coordinating physicians."@en ,
+                 "Médecins généralistes et médecins coordonnateurs."@fr .
+
+abx:CareAssistant a owl:Class ;
+    rdfs:subClassOf abx:HealthProfessional ;
+    rdfs:label "Care assistant"@en , "Aide-soignant"@fr ;
+    rdfs:comment "Nursing assistants and care aides."@en , "Aides-soignants et auxiliaires de soins."@fr .
+
+abx:Pharmacist a owl:Class ;
+    rdfs:subClassOf abx:HealthProfessional ;
+    rdfs:label "Pharmacist"@en , "Pharmacien"@fr ;
+    rdfs:comment "Community or hospital pharmacists."@en , "Pharmaciens d'officine ou hospitaliers."@fr .
+
+abx:Resident a owl:Class ;
+    rdfs:subClassOf abx:TargetAudience ;
+    rdfs:label "Resident"@en , "Résident"@fr ;
+    rdfs:comment "People living in a nursing home."@en , "Personnes vivant en EHPAD."@fr .
+
+abx:Family a owl:Class ;
+    rdfs:subClassOf abx:TargetAudience ;
+    rdfs:label "Family"@en , "Famille"@fr ;
+    rdfs:comment "Relatives and visitors of residents."@en , "Proches et visiteurs des résidents."@fr .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( abx:Nurse abx:Physician abx:CareAssistant abx:Pharmacist abx:Resident abx:Family ) .
+
+### Topic hierarchy
+
+abx:Topic a owl:Class ;
+    rdfs:label "Topic"@en , "Thématique"@fr ;
+    rdfs:comment "A subject covered by a resource."@en , "Sujet traité par une ressource."@fr .
+
+abx:Infection a owl:Class ;
+    rdfs:subClassOf abx:Topic ;
+    rdfs:label "Infection"@en , "Infection"@fr ;
+    rdfs:comment "Topics about a specific type of infection."@en ,
+                 "Thématiques portant sur un type d'infection."@fr .
+
+abx:UrinaryTractInfection a owl:Class ;
+    rdfs:subClassOf abx:Infection ;
+    rdfs:label "Urinary tract infection"@en , "Infection urinaire"@fr ;
+    rdfs:comment "Diagnosis and management of urinary tract infections, including asymptomatic bacteriuria."@en ,
+                 "Diagnostic et prise en charge des infections urinaires, y compris la colonisation urinaire."@fr .
+
+abx:RespiratoryInfection a owl:Class ;
+    rdfs:subClassOf abx:Infection ;
+    rdfs:label "Respiratory infection"@en , "Infection respiratoire"@fr ;
+    rdfs:comment "Pneumonia, bronchitis and other respiratory tract infections."@en ,
+                 "Pneumopathies, bronchites et autres infections respiratoires."@fr .
+
+abx:AntibioticResistance a owl:Class ;
+    rdfs:subClassOf abx:Topic ;
+    rdfs:label "Antibiotic resistance"@en , "Antibiorésistance"@fr ;
+    rdfs:comment "Antimicrobial resistance and multidrug-resistant bacteria."@en ,
+                 "Résistance aux antibiotiques et bactéries multirésistantes."@fr .
+
+abx:HandHygiene a owl:Class ;
+    rdfs:subClassOf abx:Topic ;
+    rdfs:label "Hand hygiene"@en , "Hygiène des mains"@fr ;
+    rdfs:comment "Hand washing and alcohol-based hand rub."@en ,
+                 "Lavage des mains et friction hydro-alcoolique."@fr .
+
+abx:Prescription a owl:Class ;
+    rdfs:subClassOf abx:Topic ;
+    rdfs:label "Antibiotic prescription"@en , "Prescription antibiotique"@fr ;
+    rdfs:comment "Choice, dose, duration and reassessment of antibiotic treatments."@en ,
+                 "Choix, dose, durée et réévaluation des traitements antibiotiques."@fr .
+
+abx:Vaccination a owl:Class ;
+    rdfs:subClassOf abx:Topic ;
+    rdfs:label "Vaccination"@en , "Vaccination"@fr ;
+    rdfs:comment "Vaccination of residents and staff (influenza, pneumococcus, COVID-19)."@en ,
+                 "Vaccination des résidents et du personnel (grippe, pneumocoque, COVID-19)."@fr .
+
+### Other descriptive dimensions
+
+abx:Objective a owl:Class ;
+    rdfs:label "Objective"@en , "Objectif"@fr ;
+    rdfs:comment "The intended effect of a resource on its audience."@en ,
+                 "Effet attendu de la ressource sur son public."@fr .
+
+abx:Format a owl:Class ;
+    rdfs:label "Format"@en , "Format"@fr ;
+    rdfs:comment "The physical or digital medium of a resource."@en ,
+                 "Support physique ou numérique de la ressource."@fr .
+
+abx:UsageCondition a owl:Class ;
+    rdfs:label "Usage condition"@en , "Condition d'utilisation"@fr ;
+    rdfs:comment "Conditions under which a resource can be accessed or used (licence, prerequisites)."@en ,
+                 "Conditions d'accès ou d'utilisation de la ressource (licence, prérequis)."@fr .
+
+#################################################################
+#    Object properties
+#################################################################
+
+abx:hasTargetAudience a owl:ObjectProperty ;
+    rdfs:domain abx:Resource ;
+    rdfs:range abx:TargetAudience ;
+    rdfs:label "has target audience"@en , "a pour public cible"@fr ;
+    rdfs:comment "Links a resource to the audience it is intended for."@en ,
+                 "Relie une ressource au public auquel elle est destinée."@fr .
+
+abx:hasObjective a owl:ObjectProperty ;
+    rdfs:domain abx:Resource ;
+    rdfs:range abx:Objective ;
+    rdfs:label "has objective"@en , "a pour objectif"@fr ;
+    rdfs:comment "Links a resource to its intended objective."@en ,
+                 "Relie une ressource à son objectif."@fr .
+
+abx:coversTopic a owl:ObjectProperty ;
+    rdfs:domain abx:Resource ;
+    rdfs:range abx:Topic ;
+    rdfs:label "covers topic"@en , "traite de"@fr ;
+    rdfs:comment "Links a resource to a topic it covers."@en ,
+                 "Relie une ressource à une thématique traitée."@fr .
+
+abx:hasFormat a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain abx:Resource ;
+    rdfs:range abx:Format ;
+    rdfs:label "has format"@en , "a pour format"@fr ;
+    rdfs:comment "Links a resource to its (single) format."@en ,
+                 "Relie une ressource à son format (unique)."@fr .
+
+abx:hasUsageCondition a owl:ObjectProperty ;
+    rdfs:domain abx:Resource ;
+    rdfs:range abx:UsageCondition ;
+    rdfs:label "has usage condition"@en , "a pour condition d'utilisation"@fr ;
+    rdfs:comment "Links a resource to a usage or access condition."@en ,
+                 "Relie une ressource à une condition d'utilisation ou d'accès."@fr .
+
+abx:relatedTo a owl:ObjectProperty , owl:SymmetricProperty ;
+    rdfs:domain abx:Resource ;
+    rdfs:range abx:Resource ;
+    rdfs:label "related to"@en , "liée à"@fr ;
+    rdfs:comment "Links two resources that complement each other."@en ,
+                 "Relie deux ressources complémentaires."@fr .
+
+#################################################################
+#    Data properties
+#################################################################
+
+abx:title a owl:DatatypeProperty ;
+    rdfs:domain abx:Resource ;
+    rdfs:range xsd:string ;
+    rdfs:label "title"@en , "titre"@fr ;
+    rdfs:comment "The title of the resource."@en , "Titre de la ressource."@fr .
+
+abx:publicationYear a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain abx:Resource ;
+    rdfs:range xsd:integer ;
+    rdfs:label "publication year"@en , "année de publication"@fr ;
+    rdfs:comment "Year the resource was published."@en , "Année de publication de la ressource."@fr .
+
+abx:publisher a owl:DatatypeProperty ;
+    rdfs:domain abx:Resource ;
+    rdfs:range xsd:string ;
+    rdfs:label "publisher"@en , "éditeur"@fr ;
+    rdfs:comment "Organisation that published the resource."@en ,
+                 "Organisme ayant publié la ressource."@fr .
+
+abx:language a owl:DatatypeProperty ;
+    rdfs:domain abx:Resource ;
+    rdfs:range xsd:string ;
+    rdfs:label "language"@en , "langue"@fr ;
+    rdfs:comment "ISO 639-1 language code of the resource (e.g. 'fr', 'en')."@en ,
+                 "Code langue ISO 639-1 de la ressource (par ex. 'fr', 'en')."@fr .
+
+abx:url a owl:DatatypeProperty ;
+    rdfs:domain abx:Resource ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "url"@en , "url"@fr ;
+    rdfs:comment "Web address where the resource can be found."@en ,
+                 "Adresse web de la ressource."@fr .
+
+#################################################################
+#    Individuals (controlled vocabulary)
+#################################################################
+
+### Target audiences
+
+abx:nurse a owl:NamedIndividual , abx:Nurse ;
+    rdfs:label "Nurses"@en , "Infirmiers"@fr ;
+    skos:altLabel "nurse"@en , "IDE"@fr , "infirmière"@fr , "infirmières"@fr , "infirmier coordinateur"@fr .
+
+abx:physician a owl:NamedIndividual , abx:Physician ;
+    rdfs:label "Physicians"@en , "Médecins"@fr ;
+    skos:altLabel "doctor"@en , "GP"@en , "general practitioner"@en , "médecin"@fr , "médecin coordonnateur"@fr , "médecin traitant"@fr .
+
+abx:care_assistant a owl:NamedIndividual , abx:CareAssistant ;
+    rdfs:label "Care assistants"@en , "Aides-soignants"@fr ;
+    skos:altLabel "nursing assistant"@en , "care aide"@en , "aide-soignant"@fr , "aides-soignantes"@fr , "AS"@fr .
+
+abx:pharmacist a owl:NamedIndividual , abx:Pharmacist ;
+    rdfs:label "Pharmacists"@en , "Pharmaciens"@fr ;
+    skos:altLabel "pharmacist"@en , "pharmacien"@fr .
+
+abx:resident a owl:NamedIndividual , abx:Resident ;
+    rdfs:label "Residents"@en , "Résidents"@fr ;
+    skos:altLabel "resident"@en , "patient"@en , "résident"@fr , "personnes âgées"@fr .
+
+abx:family a owl:NamedIndividual , abx:Family ;
+    rdfs:label "Families"@en , "Familles"@fr ;
+    skos:altLabel "relatives"@en , "visitors"@en , "proches"@fr , "visiteurs"@fr .
+
+### Topics
+
+abx:uti a owl:NamedIndividual , abx:UrinaryTractInfection ;
+    rdfs:label "Urinary tract infection"@en , "Infection urinaire"@fr ;
+    skos:altLabel "UTI"@en , "bacteriuria"@en , "cystitis"@en , "infections urinaires"@fr , "bactériurie"@fr , "bandelette urinaire"@fr .
+
+abx:respiratory_infection a owl:NamedIndividual , abx:RespiratoryInfection ;
+    rdfs:label "Respiratory infection"@en , "Infection respiratoire"@fr ;
+    skos:altLabel "pneumonia"@en , "bronchitis"@en , "pneumopathie"@fr , "bronchite"@fr .
+
+abx:antibiotic_resistance a owl:NamedIndividual , abx:AntibioticResistance ;
+    rdfs:label "Antibiotic resistance"@en , "Antibiorésistance"@fr ;
+    skos:altLabel "antimicrobial resistance"@en , "AMR"@en , "multidrug-resistant"@en , "BMR"@fr , "résistance aux antibiotiques"@fr .
+
+abx:hand_hygiene a owl:NamedIndividual , abx:HandHygiene ;
+    rdfs:label "Hand hygiene"@en , "Hygiène des mains"@fr ;
+    skos:altLabel "hand rub"@en , "hand washing"@en , "friction hydro-alcoolique"@fr , "lavage des mains"@fr .
+
+abx:prescription a owl:NamedIndividual , abx:Prescription ;
+    rdfs:label "Antibiotic prescription"@en , "Prescription antibiotique"@fr ;
+    skos:altLabel "prescribing"@en , "treatment duration"@en , "prescription"@fr , "durée de traitement"@fr , "réévaluation"@fr .
+
+abx:vaccination a owl:NamedIndividual , abx:Vaccination ;
+    rdfs:label "Vaccination"@en , "Vaccination"@fr ;
+    skos:altLabel "vaccine"@en , "immunisation"@en , "vaccin"@fr , "grippe"@fr .
+
+### Objectives
+
+abx:raise_awareness a owl:NamedIndividual , abx:Objective ;
+    rdfs:label "Raise awareness"@en , "Sensibiliser"@fr ;
+    skos:altLabel "awareness"@en , "sensibilisation"@fr , "informer"@fr .
+
+abx:improve_diagnosis a owl:NamedIndividual , abx:Objective ;
+    rdfs:label "Improve diagnosis"@en , "Améliorer le diagnostic"@fr ;
+    skos:altLabel "diagnose"@en , "diagnostic"@fr , "repérer"@fr .
+
+abx:reduce_unnecessary_prescription a owl:NamedIndividual , abx:Objective ;
+    rdfs:label "Reduce unnecessary prescriptions"@en , "Réduire les prescriptions inutiles"@fr ;
+    skos:altLabel "avoid unnecessary antibiotics"@en , "éviter les antibiotiques inutiles"@fr .
+
+abx:improve_prescription_quality a owl:NamedIndividual , abx:Objective ;
+    rdfs:label "Improve prescription quality"@en , "Améliorer la qualité des prescriptions"@fr ;
+    skos:altLabel "appropriate prescribing"@en , "bon usage"@fr .
+
+abx:prevent_infection a owl:NamedIndividual , abx:Objective ;
+    rdfs:label "Prevent infections"@en , "Prévenir les infections"@fr ;
+    skos:altLabel "prevention"@en , "prévention"@fr .
+
+abx:train_staff a owl:NamedIndividual , abx:Objective ;
+    rdfs:label "Train staff"@en , "Former les professionnels"@fr ;
+    skos:altLabel "upskill"@en , "formation"@fr .
+
+### Formats
+
+abx:print a owl:NamedIndividual , abx:Format ;
+    rdfs:label "Printed document"@en , "Document imprimé"@fr ;
+    skos:altLabel "printable"@en , "A3"@en , "A4"@en , "imprimable"@fr .
+
+abx:pdf a owl:NamedIndividual , abx:Format ;
+    rdfs:label "PDF document"@en , "Document PDF"@fr ;
+    skos:altLabel "PDF"@en , "downloadable"@en , "téléchargeable"@fr .
+
+abx:elearning a owl:NamedIndividual , abx:Format ;
+    rdfs:label "E-learning module"@en , "Module e-learning"@fr ;
+    skos:altLabel "online course"@en , "MOOC"@en , "formation en ligne"@fr , "à distance"@fr .
+
+abx:face_to_face a owl:NamedIndividual , abx:Format ;
+    rdfs:label "Face-to-face session"@en , "Session présentielle"@fr ;
+    skos:altLabel "in-person"@en , "workshop"@en , "présentiel"@fr , "atelier"@fr .
+
+abx:video_file a owl:NamedIndividual , abx:Format ;
+    rdfs:label "Online video"@en , "Vidéo en ligne"@fr ;
+    skos:altLabel "video"@en , "vidéo"@fr .
+
+abx:web_app a owl:NamedIndividual , abx:Format ;
+    rdfs:label "Web application"@en , "Application web"@fr ;
+    skos:altLabel "app"@en , "website"@en , "application"@fr , "site web"@fr .
+
+### Usage conditions
+
+abx:free_access a owl:NamedIndividual , abx:UsageCondition ;
+    rdfs:label "Free access"@en , "Accès libre"@fr ;
+    skos:altLabel "free"@en , "freely available"@en , "gratuit"@fr , "libre accès"@fr .
+
+abx:registration_required a owl:NamedIndividual , abx:UsageCondition ;
+    rdfs:label "Registration required"@en , "Inscription obligatoire"@fr ;
+    skos:altLabel "sign-up"@en , "inscription"@fr .
+
+abx:trainer_required a owl:NamedIndividual , abx:UsageCondition ;
+    rdfs:label "Requires a trainer"@en , "Nécessite un formateur"@fr ;
+    skos:altLabel "facilitator"@en , "animé par"@fr , "formateur"@fr .
+
+abx:open_licence a owl:NamedIndividual , abx:UsageCondition ;
+    rdfs:label "Open licence (Creative Commons)"@en , "Licence ouverte (Creative Commons)"@fr ;
+    skos:altLabel "CC BY"@en , "Creative Commons"@en , "licence ouverte"@fr .
+
+abx:professional_use_only a owl:NamedIndividual , abx:UsageCondition ;
+    rdfs:label "Professional use only"@en , "Usage professionnel uniquement"@fr ;
+    skos:altLabel "for professionals only"@en , "réservé aux professionnels"@fr .
