@@ -1,0 +1,25 @@
+{
+  "id": "r03",
+  "resource_type": "PracticalSheet",
+  "title": "Hand rub in 7 steps",
+  "publisher": "Northfield Infection Prevention Network",
+  "publication_year": 2022,
+  "language": "en",
+  "target_audience": [
+    "care_assistant",
+    "nurse"
+  ],
+  "objective": [
+    "prevent_infection"
+  ],
+  "topic": [
+    "hand_hygiene"
+  ],
+  "format": "pdf",
+  "usage_condition": [
+    "open_licence"
+  ],
+  "related_to": [
+    "r06"
+  ]
+}

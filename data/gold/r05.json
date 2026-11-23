@@ -1,0 +1,28 @@
+{
+  "id": "r05",
+  "resource_type": "Tool",
+  "title": "UTI Check: decision support for suspected urinary tract infection",
+  "publisher": "CareHome Stewardship Lab",
+  "publication_year": 2024,
+  "language": "en",
+  "target_audience": [
+    "nurse",
+    "physician"
+  ],
+  "objective": [
+    "improve_diagnosis",
+    "reduce_unnecessary_prescription"
+  ],
+  "topic": [
+    "uti",
+    "prescription"
+  ],
+  "format": "web_app",
+  "usage_condition": [
+    "free_access",
+    "professional_use_only"
+  ],
+  "related_to": [
+    "r01"
+  ]
+}

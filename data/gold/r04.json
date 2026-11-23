@@ -1,0 +1,22 @@
+{
+  "id": "r04",
+  "resource_type": "Video",
+  "title": "Les antibiotiques, c'est pas automatique… même en EHPAD",
+  "publisher": "Vieillir en Santé",
+  "publication_year": 2021,
+  "language": "fr",
+  "target_audience": [
+    "family",
+    "resident"
+  ],
+  "objective": [
+    "raise_awareness"
+  ],
+  "topic": [
+    "antibiotic_resistance",
+    "vaccination"
+  ],
+  "format": "video_file",
+  "usage_condition": [],
+  "related_to": []
+}

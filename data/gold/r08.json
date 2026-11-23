@@ -1,0 +1,28 @@
+{
+  "id": "r08",
+  "resource_type": "PracticalSheet",
+  "title": "Durées de traitement antibiotique : fiche mémo pour l'officine",
+  "publisher": "Ordre des pharmaciens de Lorraine-Est",
+  "publication_year": 2024,
+  "language": "fr",
+  "target_audience": [
+    "pharmacist",
+    "physician"
+  ],
+  "objective": [
+    "improve_prescription_quality"
+  ],
+  "topic": [
+    "prescription",
+    "uti",
+    "respiratory_infection"
+  ],
+  "format": "pdf",
+  "usage_condition": [
+    "professional_use_only"
+  ],
+  "related_to": [
+    "r02",
+    "r10"
+  ]
+}

@@ -1,0 +1,6 @@
+UTI Check: decision support for suspected urinary tract infection
+
+UTI Check is a web application released in 2024 by the (fictional) CareHome Stewardship Lab.
+Nurses answer a short series of questions at the bedside (fever, new urinary symptoms, delirium, catheter) and the tool tells them whether a urine test is useful and whether the GP should be called. A summary is generated for the physician.
+It aims to improve diagnosis and to avoid unnecessary antibiotics for asymptomatic bacteriuria, while supporting appropriate prescribing when an infection is likely.
+Free to use; intended for professionals only, not for residents or families.

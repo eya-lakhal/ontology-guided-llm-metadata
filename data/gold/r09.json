@@ -1,0 +1,27 @@
+{
+  "id": "r09",
+  "resource_type": "Training",
+  "title": "Antimicrobial resistance in long-term care: an open online course",
+  "publisher": "European Long-Term Care Academy",
+  "publication_year": 2025,
+  "language": "en",
+  "target_audience": [
+    "nurse",
+    "physician",
+    "pharmacist",
+    "care_assistant"
+  ],
+  "objective": [
+    "raise_awareness",
+    "train_staff"
+  ],
+  "topic": [
+    "antibiotic_resistance"
+  ],
+  "format": "elearning",
+  "usage_condition": [
+    "free_access",
+    "open_licence"
+  ],
+  "related_to": []
+}

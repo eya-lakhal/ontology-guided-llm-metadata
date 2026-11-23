@@ -1,0 +1,24 @@
+{
+  "id": "r07",
+  "resource_type": "Poster",
+  "title": "Flu season: protect yourself, protect your residents",
+  "publisher": "Riverside Care Homes Group",
+  "publication_year": 2022,
+  "language": "en",
+  "target_audience": [
+    "nurse",
+    "care_assistant",
+    "resident"
+  ],
+  "objective": [
+    "raise_awareness",
+    "prevent_infection"
+  ],
+  "topic": [
+    "vaccination",
+    "respiratory_infection"
+  ],
+  "format": "print",
+  "usage_condition": [],
+  "related_to": []
+}

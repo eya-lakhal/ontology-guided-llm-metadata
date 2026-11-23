@@ -1,0 +1,28 @@
+{
+  "id": "r06",
+  "resource_type": "Training",
+  "title": "Atelier hygiène des mains et prévention des BMR",
+  "publisher": "Hygiène Sud-Ouest",
+  "publication_year": 2023,
+  "language": "fr",
+  "target_audience": [
+    "nurse",
+    "care_assistant"
+  ],
+  "objective": [
+    "train_staff",
+    "prevent_infection"
+  ],
+  "topic": [
+    "hand_hygiene",
+    "antibiotic_resistance"
+  ],
+  "format": "face_to_face",
+  "usage_condition": [
+    "trainer_required",
+    "registration_required"
+  ],
+  "related_to": [
+    "r03"
+  ]
+}

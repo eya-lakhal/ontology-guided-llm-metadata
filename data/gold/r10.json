@@ -1,0 +1,26 @@
+{
+  "id": "r10",
+  "resource_type": "PracticalSheet",
+  "title": "Pneumopathie chez le résident : quand l'évoquer, que faire ?",
+  "publisher": "CRAPI Grand-Est",
+  "publication_year": 2023,
+  "language": "fr",
+  "target_audience": [
+    "nurse",
+    "physician"
+  ],
+  "objective": [
+    "improve_diagnosis"
+  ],
+  "topic": [
+    "respiratory_infection",
+    "prescription"
+  ],
+  "format": "pdf",
+  "usage_condition": [
+    "free_access"
+  ],
+  "related_to": [
+    "r08"
+  ]
+}

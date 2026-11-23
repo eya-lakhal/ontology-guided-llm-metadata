@@ -1,0 +1,26 @@
+{
+  "id": "r02",
+  "resource_type": "Training",
+  "title": "Prescrire les antibiotiques en EHPAD : formation en ligne",
+  "publisher": "Institut Antibio-Formation",
+  "publication_year": 2024,
+  "language": "fr",
+  "target_audience": [
+    "physician"
+  ],
+  "objective": [
+    "improve_prescription_quality",
+    "train_staff"
+  ],
+  "topic": [
+    "prescription",
+    "antibiotic_resistance"
+  ],
+  "format": "elearning",
+  "usage_condition": [
+    "registration_required"
+  ],
+  "related_to": [
+    "r08"
+  ]
+}

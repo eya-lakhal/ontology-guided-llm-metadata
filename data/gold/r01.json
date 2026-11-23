@@ -1,0 +1,26 @@
+{
+  "id": "r01",
+  "resource_type": "Poster",
+  "title": "Bandelette urinaire en EHPAD : pas de dépistage systématique",
+  "publisher": "CRAPI Grand-Est",
+  "publication_year": 2023,
+  "language": "fr",
+  "target_audience": [
+    "care_assistant",
+    "nurse"
+  ],
+  "objective": [
+    "reduce_unnecessary_prescription",
+    "improve_diagnosis"
+  ],
+  "topic": [
+    "uti"
+  ],
+  "format": "print",
+  "usage_condition": [
+    "free_access"
+  ],
+  "related_to": [
+    "r05"
+  ]
+}

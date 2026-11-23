@@ -32,6 +32,25 @@ is an OWL 2 ontology in Turtle with bilingual (EN/FR) labels and comments.
    and no class should appear under `owl:Nothing` in the inferred hierarchy.
    Individuals are then classified, e.g. `abx:nurse` is inferred to be a `HealthProfessional` and a `TargetAudience`.
 
+## Dataset
+
+> ⚠️ **All data in `data/` is synthetic.** The 10 resource descriptions were written for this project:
+> they are realistic in style but the resources, publishers (e.g. "CRAPI Grand-Est", "Northfield Infection
+> Prevention Network") and dates are invented. They contain no real patient or institutional data.
+
+- `data/raw/rXX.txt`: plain-text description of one resource (6 in French, 4 in English), first line = title.
+- `data/gold/rXX.json`: expected annotation, using only identifiers defined in the ontology, e.g.
+
+```json
+{
+  "id": "r01", "resource_type": "Poster", "title": "...", "publisher": "CRAPI Grand-Est",
+  "publication_year": 2023, "language": "fr",
+  "target_audience": ["care_assistant", "nurse"],
+  "objective": ["reduce_unnecessary_prescription", "improve_diagnosis"],
+  "topic": ["uti"], "format": "print", "usage_condition": ["free_access"], "related_to": ["r05"]
+}
+```
+
 ## Setup (Windows PowerShell)
 
 ```powershell
