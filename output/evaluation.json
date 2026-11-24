@@ -1,5 +1,5 @@
 {
-  "model": "mock:keyword-baseline",
+  "model": "ollama:llama3.1:8b",
   "guided": {
     "condition": "guided",
     "n_docs": 10,
@@ -13,28 +13,28 @@
         "fn": 0
       },
       "target_audience": {
-        "precision": 0.9565217391304348,
-        "recall": 1.0,
-        "f1": 0.9777777777777777,
-        "tp": 22,
-        "fp": 1,
-        "fn": 0
+        "precision": 1.0,
+        "recall": 0.9090909090909091,
+        "f1": 0.9523809523809523,
+        "tp": 20,
+        "fp": 0,
+        "fn": 2
       },
       "objective": {
-        "precision": 0.9411764705882353,
-        "recall": 1.0,
-        "f1": 0.9696969696969697,
-        "tp": 16,
+        "precision": 0.9230769230769231,
+        "recall": 0.75,
+        "f1": 0.8275862068965517,
+        "tp": 12,
         "fp": 1,
-        "fn": 0
+        "fn": 4
       },
       "topic": {
-        "precision": 0.9473684210526315,
-        "recall": 1.0,
-        "f1": 0.972972972972973,
-        "tp": 18,
-        "fp": 1,
-        "fn": 0
+        "precision": 0.8571428571428571,
+        "recall": 0.6666666666666666,
+        "f1": 0.75,
+        "tp": 12,
+        "fp": 2,
+        "fn": 6
       },
       "format": {
         "precision": 1.0,
@@ -45,12 +45,12 @@
         "fn": 0
       },
       "usage_condition": {
-        "precision": 1.0,
-        "recall": 1.0,
-        "f1": 1.0,
-        "tp": 11,
-        "fp": 0,
-        "fn": 0
+        "precision": 0.7272727272727273,
+        "recall": 0.7272727272727273,
+        "f1": 0.7272727272727273,
+        "tp": 8,
+        "fp": 3,
+        "fn": 3
       },
       "title": {
         "precision": 1.0,
@@ -69,24 +69,24 @@
         "fn": 0
       },
       "language": {
-        "precision": 1.0,
-        "recall": 1.0,
-        "f1": 1.0,
-        "tp": 10,
-        "fp": 0,
-        "fn": 0
+        "precision": 0.7,
+        "recall": 0.7,
+        "f1": 0.7,
+        "tp": 7,
+        "fp": 3,
+        "fn": 3
       }
     },
     "controlled_micro": {
-      "precision": 0.9666666666666667,
-      "recall": 1.0,
-      "f1": 0.983050847457627
+      "precision": 0.9230769230769231,
+      "recall": 0.8275862068965517,
+      "f1": 0.8727272727272727
     },
     "out_of_ontology_rate": 0.0,
     "schema_valid_rate": 1.0,
     "mean_attempts": 1.0,
     "shacl_conformance_rate": 1.0,
-    "faithfulness_rate": 1.0
+    "faithfulness_rate": 0.9722222222222222
   },
   "unguided": {
     "condition": "unguided",
@@ -94,59 +94,59 @@
     "per_property": {
       "resource_type": {
         "precision": 1.0,
-        "recall": 0.3,
-        "f1": 0.4615384615384615,
-        "tp": 3,
+        "recall": 0.7,
+        "f1": 0.8235294117647058,
+        "tp": 7,
         "fp": 0,
-        "fn": 7
+        "fn": 3
       },
       "target_audience": {
-        "precision": 0.9523809523809523,
+        "precision": 1.0,
         "recall": 0.9090909090909091,
-        "f1": 0.9302325581395349,
+        "f1": 0.9523809523809523,
         "tp": 20,
-        "fp": 1,
+        "fp": 0,
         "fn": 2
       },
       "objective": {
         "precision": 1.0,
-        "recall": 0.1875,
-        "f1": 0.3157894736842105,
-        "tp": 3,
+        "recall": 0.75,
+        "f1": 0.8571428571428571,
+        "tp": 12,
         "fp": 0,
-        "fn": 13
+        "fn": 4
       },
       "topic": {
-        "precision": 0.9333333333333333,
-        "recall": 0.7777777777777778,
-        "f1": 0.8484848484848485,
-        "tp": 14,
-        "fp": 1,
-        "fn": 4
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "tp": 12,
+        "fp": 0,
+        "fn": 6
       },
       "format": {
         "precision": 1.0,
-        "recall": 0.8,
-        "f1": 0.888888888888889,
-        "tp": 8,
+        "recall": 0.5,
+        "f1": 0.6666666666666666,
+        "tp": 5,
         "fp": 0,
-        "fn": 2
+        "fn": 5
       },
       "usage_condition": {
         "precision": 1.0,
-        "recall": 0.36363636363636365,
-        "f1": 0.5333333333333333,
-        "tp": 4,
+        "recall": 0.45454545454545453,
+        "f1": 0.625,
+        "tp": 5,
         "fp": 0,
-        "fn": 7
+        "fn": 6
       },
       "title": {
-        "precision": 1.0,
-        "recall": 1.0,
-        "f1": 1.0,
-        "tp": 10,
-        "fp": 0,
-        "fn": 0
+        "precision": 0.8,
+        "recall": 0.8,
+        "f1": 0.8000000000000002,
+        "tp": 8,
+        "fp": 2,
+        "fn": 2
       },
       "publication_year": {
         "precision": 1.0,
@@ -166,14 +166,14 @@
       }
     },
     "controlled_micro": {
-      "precision": 0.9629629629629629,
-      "recall": 0.5977011494252874,
-      "f1": 0.7375886524822696
+      "precision": 1.0,
+      "recall": 0.7011494252873564,
+      "f1": 0.8243243243243243
     },
-    "out_of_ontology_rate": 0.4,
+    "out_of_ontology_rate": 0.3333333333333333,
     "schema_valid_rate": 1.0,
     "mean_attempts": 1.0,
-    "shacl_conformance_rate": 0.8,
-    "faithfulness_rate": 1.0
+    "shacl_conformance_rate": 0.5,
+    "faithfulness_rate": 0.989010989010989
   }
 }

@@ -13,6 +13,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import urllib.error
 import urllib.request
 from dataclasses import dataclass
 from typing import Protocol
@@ -58,16 +59,23 @@ class OllamaClient:
         return f"ollama:{self.model}"
 
     def complete(self, system: str, user: str) -> str:
-        data = _post_json(
-            f"{self.base_url.rstrip('/')}/api/chat",
-            {
-                "model": self.model,
-                "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
-                "stream": False,
-                "format": "json",
-                "options": {"temperature": 0, "num_ctx": 8192},
-            },
-        )
+        try:
+            data = _post_json(
+                f"{self.base_url.rstrip('/')}/api/chat",
+                {
+                    "model": self.model,
+                    "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
+                    "stream": False,
+                    "format": "json",
+                    "options": {"temperature": 0, "num_ctx": 8192},
+                },
+            )
+        except urllib.error.HTTPError as exc:
+            if exc.code == 404:
+                raise RuntimeError(f"Ollama model '{self.model}' not found: run `ollama pull {self.model}`") from exc
+            raise
+        except urllib.error.URLError as exc:
+            raise RuntimeError(f"cannot reach Ollama at {self.base_url}: start it with `ollama serve`") from exc
         return data["message"]["content"]
 
 

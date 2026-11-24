@@ -207,23 +207,39 @@ usage condition (curation backlog), resources per audience with French labels, r
 
 ## Evaluation
 
-`python -m src.evaluate` runs both conditions on the 10 documents and writes `output/evaluation.md`:
+`python -m src.evaluate` runs both conditions on the 10 documents and writes `output/evaluation.md`.
+Results with **Llama 3.1 8B** (Ollama, local, CPU, temperature 0, same post-processing in both conditions):
 
 | Metric | Guided (ontology in prompt) | Unguided | Δ |
 |---|---:|---:|---:|
-| Micro-F1, controlled properties | 98.3% | 73.8% | +24.5 pts |
-| Micro-precision | 96.7% | 96.3% | +0.4 pts |
-| Micro-recall | 100.0% | 59.8% | +40.2 pts |
-| Out-of-ontology values (before validation) ↓ | 0.0% | 40.0% | −40.0 pts |
-| SHACL-conformant records | 100.0% | 80.0% | +20.0 pts |
-| Faithful excerpts | 100.0% | 100.0% | 0 |
+| Micro-F1, controlled properties | **87.3%** | 82.4% | +4.8 pts |
+| Micro-precision | 92.3% | 100.0% | −7.7 pts |
+| Micro-recall | **82.8%** | 70.1% | +12.6 pts |
+| Out-of-ontology values (before validation) ↓ | **0.0%** | 33.3% | −33.3 pts |
+| SHACL-conformant records | **100%** (10/10) | 50% (5/10) | +50 pts |
+| Faithful excerpts | 97.2% | 98.9% | −1.7 pts |
 
-> ⚠️ **These figures come from the offline `mock` provider**, a keyword matcher whose lexicon was
-> written alongside the synthetic data. They validate the evaluation machinery and show the expected
-> *shape* of the ablation: without the vocabulary, the model answers in its own terms ("Nursing assistants",
-> "fact sheet", "Staff education"), which cannot be grounded to the ontology, so recall and SHACL
-> conformance fall. They are **not LLM results**. Reproduce with a real model:
-> `python -m src.evaluate --provider ollama --model llama3.1:8b` (or `qwen2.5:7b`).
+Full per-property table: [`output/evaluation.md`](output/evaluation.md).
+
+**Findings**
+
+- **Ontology guidance mainly buys conformance and recall.** Without the vocabulary, a third of the
+  controlled values are expressed in the model's own terms and cannot be grounded to the ontology:
+  `"nursing home staff"`, `"medical coordinators"`, `"antibiotic stewardship"`, `"MRB prevention"`
+  (a literal translation of the French *BMR*), `"printable poster"`, `"sheet"`. These values are lost,
+  so half of the unguided records violate the SHACL shapes (e.g. no grounded format), against none when guided.
+- **Precision is slightly lower when guided** (92% vs 100%): given a closed list, the model sometimes picks a
+  plausible but unsupported id (e.g. adding `antibiotic_resistance` or a usage condition not stated). In the
+  unguided condition, the values that do survive grounding are the "obvious" ones, hence high precision but low recall.
+  This is exactly the kind of error the expert review step is designed to catch.
+- **Side effect of the bilingual vocabulary:** in the guided condition the model labelled 3 English documents as
+  `fr` (language accuracy 70% vs 100% unguided), probably biased by the French labels in the prompt.
+  The fix is cheap: detect the language deterministically, or state it outside the vocabulary block.
+- Excerpts are almost always verbatim (≥ 97%), with no retry needed: JSON mode in Ollama makes the output parsable.
+
+> The offline `mock` provider (a keyword matcher used by the tests and the CI) can be run with
+> `python -m src.evaluate --provider mock`. Its scores are not meaningful: its lexicon was written with the data.
+> With 10 synthetic documents these LLM results are indicative only (see limitations).
 
 Metrics: per-property P/R/F1 (set comparison per document, micro-averaged); out-of-ontology rate on the
 model's first parsable answer; schema-valid rate and number of retries; SHACL conformance of the produced
